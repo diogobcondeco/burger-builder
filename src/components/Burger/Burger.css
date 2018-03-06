@@ -12,6 +12,7 @@
   .Burger {
     width: 350px;
     height: 300px;
+    overflow: auto;
   }
 }
 
