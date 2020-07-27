@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 import Modal from '../../components/UI/Modal/Modal';
-import Aux from '../Auxiliar/Auxiliar';
+import Auxiliar from '../Auxiliar/Auxiliar';
 
 const withErrorHandler = (WrappedComponent, axios) => {
     return class extends Component {
         state = {
-            error: null,
+            error: null
         }
 
         componentWillMount() {
@@ -20,26 +20,24 @@ const withErrorHandler = (WrappedComponent, axios) => {
         }
 
         componentWillUnmount() {
-            console.log("will unmount", this.reqInterceptor, this.resInterceptor);
             axios.interceptors.request.eject(this.reqInterceptor);
             axios.interceptors.response.eject(this.resInterceptor);
         }
 
-        errorConfirmHandler = () => {
+        errorConfirmedHandler = () => {
             this.setState({ error: null });
         }
 
         render() {
             return (
-                <Aux>
+                <Auxiliar>
                     <Modal
                         show={this.state.error}
-                        modalClosed={this.errorConfirmHandler}
-                    >
+                        modalClosed={this.errorConfirmedHandler}>
                         {this.state.error ? this.state.error.message : null}
                     </Modal>
                     <WrappedComponent {...this.props} />
-                </Aux>
+                </Auxiliar>
             );
         }
     }
