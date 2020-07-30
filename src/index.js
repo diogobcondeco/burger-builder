@@ -9,7 +9,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import reducer from './store/reducer';
 
-const store = createStore();
+const store = createStore(reducer);
 
 const app = (
     <Provider store={store}>
@@ -17,7 +17,6 @@ const app = (
             <App />
         </BrowserRouter>
     </Provider>
-
 )
 
 ReactDOM.render(app, document.getElementById('root'));
