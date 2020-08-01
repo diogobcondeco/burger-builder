@@ -16,9 +16,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
     burgerBuilder: burgerBuilderReducer,
     order: orderReducer
-})
+});
 
-const store = createStore(burgerBuilderReducer, composeEnhancers(
+const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
 
@@ -28,7 +28,7 @@ const app = (
             <App />
         </BrowserRouter>
     </Provider>
-)
+);
 
-ReactDOM.render(app, document.getElementById('root'));
+ReactDOM.render( app, document.getElementById( 'root' ) );
 registerServiceWorker();
