@@ -1,4 +1,5 @@
 {
+  "homepage": "https://diogobcondeco.github.io/burger-builder/",
   "name": "react-complete-guide",
   "version": "0.1.0",
   "private": true,
@@ -52,7 +53,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "deploy": "npm run deploy"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -94,5 +96,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }
