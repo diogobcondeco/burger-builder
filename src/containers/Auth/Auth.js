@@ -57,7 +57,7 @@ class Auth extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.buildingBurger && this.props.authRedirectPath !== '/'{
+        if (!this.props.buildingBurger && this.props.authRedirectPath !== '/') {
             this.props.onSetAuthRedirectPath();
         }
     }
@@ -152,7 +152,7 @@ class Auth extends Component {
                 </form>
                 <Button
                     clicked={this.switchAuthModeHandler}
-                    btnType="Danger">SWITCH TO {this.state.isSignup ? LOGIN : REGISTER}</Button>
+                    btnType="Danger">SWITCH TO {this.state.isSignup ? 'LOGIN' : 'REGISTER'}</Button>
             </div>
         );
     }
