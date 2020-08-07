@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - master
-  pull:
-    branches:
-      - master
   merge:
     branches:
       - master
