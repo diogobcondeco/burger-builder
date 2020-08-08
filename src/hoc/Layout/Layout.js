@@ -39,10 +39,10 @@ class Layout extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
         isAuthenticated: state.auth.token !== null
-    }
-}
+    };
+};
 
-export default connect(mapStateToProps, null)(Layout);
+export default connect(mapStateToProps)(Layout);

@@ -39,9 +39,15 @@ class Auth extends Component {
                 },
                 valid: false,
                 touched: false
-            },
+            }
         },
         isSignup: true
+    }
+
+    componentDidMount() {
+        if (!this.props.buildingBurger && this.props.authRedirectPath !== '/') {
+            this.props.onSetAuthRedirectPath();
+        }
     }
 
     inputChangedHandler = (event, controlName) => {
@@ -52,24 +58,18 @@ class Auth extends Component {
                 touched: true
             })
         });
-        this.setState({ controls: updatedControls })
-    }
-
-    componentDidMount() {
-        if (!this.props.buildingBurger && this.props.authRedirectPath !== '/') {
-            this.props.onSetAuthRedirectPath();
-        }
+        this.setState({ controls: updatedControls });
     }
 
     submitHandler = (event) => {
         event.preventDefault();
-        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup)
+        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
     }
 
     switchAuthModeHandler = () => {
         this.setState(prevState => {
-            return { isSignup: !prevState.isSignup }
-        })
+            return { isSignup: !prevState.isSignup };
+        });
     }
 
     render() {
@@ -102,7 +102,7 @@ class Auth extends Component {
         if (this.props.error) {
             errorMessage = (
                 <p>{this.props.error.message}</p>
-            )
+            );
         }
 
         let authRedirect = null;
@@ -130,11 +130,11 @@ const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
         error: state.auth.error,
-        isAuthenticated: state.auth.token,
+        isAuthenticated: state.auth.token !== null,
         buildingBurger: state.burgerBuilder.building,
         authRedirectPath: state.auth.authRedirectPath
-    }
-}
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {

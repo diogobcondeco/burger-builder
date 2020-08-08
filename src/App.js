@@ -52,21 +52,21 @@ class App extends Component {
         <Layout>
           {routes}
         </Layout>
-      </div >
+      </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     isAuthenticated: state.auth.token !== null
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     onTryAutoSignup: () => dispatch(actions.authCheckState())
-  }
-}
+  };
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
