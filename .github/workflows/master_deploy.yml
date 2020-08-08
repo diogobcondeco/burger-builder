@@ -2,7 +2,7 @@ name: MasterDeployCI
 on:
   push:
     branches:
-      - master
+      - dev
 jobs:
   build:
     runs-on: ubuntu-latest
